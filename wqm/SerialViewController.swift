@@ -66,8 +66,8 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     var offsetCurrentCl = 109.6 // offset current when there are no NaOCl, nA
     
     //MARK: plot data
-    var numbersPH : [Double] = [] //This is where we are going to store all the numbers. This can be a set of numbers that come from a Realm database, Core data, External API's or where ever else
-    var numbersCl : [Double] = []
+    var numbersPH : [Double] = Array(repeating: 0, count: 10) //This is where we are going to store all the numbers. This can be a set of numbers that come from a Realm database, Core data, External API's or where ever else
+    var numbersCl : [Double] = Array(repeating: 0, count: 10)
 
 //MARK: Functions (evaluate values of parameters)
 
@@ -229,7 +229,9 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
                 label3b.text = String(format: "%.1f", value3b) + " nA"
                 
                 // plot
+                numbersPH.remove(at: 0)
                 numbersPH.append(value2b) //here we add the data to the array.
+                numbersCl.remove(at: 0)
                 numbersCl.append(value3b)
                 updateGraph()
                 

@@ -347,7 +347,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label2a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J41-u4-L60">
                                                 <rect key="frame" x="150.33333333333337" y="0.0" width="111.66666666666663" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -375,7 +375,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label3a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvd-Jj-uz8">
                                                 <rect key="frame" x="175" y="0.0" width="112.33333333333331" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -399,20 +399,20 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4v-Gw-Paq" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="2" y="192" width="410" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="d5L-Zt-Rch"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5b6-hl-lKR" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="2" y="396" width="410" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="dnw-Q6-d33"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Here is the received data" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-Ue-hGn">
-                                <rect key="frame" x="20" y="606" width="374" height="88"/>
+                                <rect key="frame" x="20" y="600" width="374" height="88"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="p2T-Bd-YT2"/>
@@ -421,7 +421,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-q6-XAi">
-                                <rect key="frame" x="2" y="698" width="410" height="44"/>
+                                <rect key="frame" x="2" y="692" width="410" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your message and hit 'Send'" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NKM-rO-OFm">
                                         <rect key="frame" x="8" y="7" width="394" height="30"/>
@@ -445,7 +445,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="uKa-Ue-hGn" secondAttribute="trailing" constant="20" id="4wV-Bw-Ah9"/>
                             <constraint firstItem="5b6-hl-lKR" firstAttribute="top" secondItem="p4v-Gw-Paq" secondAttribute="bottom" constant="4" id="7Ji-ua-3XQ"/>
-                            <constraint firstItem="uKa-Ue-hGn" firstAttribute="top" secondItem="5b6-hl-lKR" secondAttribute="bottom" constant="10" id="CPR-TE-ODH"/>
+                            <constraint firstItem="uKa-Ue-hGn" firstAttribute="top" secondItem="5b6-hl-lKR" secondAttribute="bottom" constant="4" id="CPR-TE-ODH"/>
                             <constraint firstItem="rvp-3C-yeE" firstAttribute="top" secondItem="8L2-oJ-fyr" secondAttribute="bottom" constant="4" id="HaT-tc-MQ7"/>
                             <constraint firstItem="uKa-Ue-hGn" firstAttribute="centerX" secondItem="fvc-it-Qiq" secondAttribute="centerX" id="Hre-wW-H4G"/>
                             <constraint firstItem="5b6-hl-lKR" firstAttribute="centerX" secondItem="fvc-it-Qiq" secondAttribute="centerX" id="NId-Vd-HN0"/>
