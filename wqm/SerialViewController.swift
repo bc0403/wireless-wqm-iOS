@@ -9,6 +9,7 @@
 import UIKit
 import CoreBluetooth
 import QuartzCore
+import Charts // You need this line to be able to use Charts Library
 
 /// The option to add a \n or \r or \r\n to the end of the send message
 enum MessageOption: Int {
@@ -43,14 +44,18 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     @IBOutlet weak var parameter3: UILabel!
     @IBOutlet weak var label3a: UILabel!
     @IBOutlet weak var label3b: UILabel!
+//    @IBOutlet weak var phPlotView: LineChartView!
+    @IBOutlet weak var phPlotView: LineChartView!
+    @IBOutlet weak var clPlotView: LineChartView!
     
-//MARK: Global variables
-    var value1a = 0.0 // Temperature
-    var value1b = 0.0 // reserved
-    var value2a = 0.0 // pH
-    var value2b = 0.0 // pH in Voltage
-    var value3a = 0.0 // free Cl in ppm
-    var value3b = 0.0 // free Cl in nA
+    
+    //MARK: Global variables
+    var value1a : Double = 0.0 // Temperature
+    var value1b : Double = 0.0 // reserved
+    var value2a : Double = 0.0 // pH
+    var value2b : Double = 0.0 // pH in Voltage
+    var value3a : Double = 0.0 // free Cl in ppm
+    var value3b : Double = 0.0 // free Cl in nA
     var fullString = "" // for message received from BLE
     var fullStringFlag = 0 // flag for fullString, 0-partly; 1-full
     var cal_pH7 = -52.02 // offset voltage at pH7, mV
@@ -60,7 +65,9 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     var feedbackResistor = 820.0e3 // feedback resistor of TIA, 320 kohm
     var offsetCurrentCl = 109.6 // offset current when there are no NaOCl, nA
     
-
+    //MARK: plot data
+    var numbersPH : [Double] = [] //This is where we are going to store all the numbers. This can be a set of numbers that come from a Realm database, Core data, External API's or where ever else
+    var numbersCl : [Double] = []
 
 //MARK: Functions (evaluate values of parameters)
 
@@ -220,7 +227,11 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
                 }
                 label3a.text = String(format: "%.2f", value3a) + " ppm"
                 label3b.text = String(format: "%.1f", value3b) + " nA"
-
+                
+                // plot
+                numbersPH.append(value2b) //here we add the data to the array.
+                numbersCl.append(value3b)
+                updateGraph()
                 
                 
             }
@@ -233,6 +244,40 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         if pref == ReceivedMessageOption.newline.rawValue { mainTextView.text! += "\n" }
         textViewScrollToBottom()
     }
+    
+    //MARK: update plots
+    func updateGraph(){
+        
+        var lineChartEntryPH  = [ChartDataEntry]() //this is the Array that will eventually be displayed on the graph.
+        var lineChartEntryCl  = [ChartDataEntry]()
+        
+        //here is the for loop
+        for i in 0..<numbersPH.count {
+            let value = ChartDataEntry(x: Double(i), y: numbersPH[i]) // here we set the X and Y status in a data chart entry
+            lineChartEntryPH.append(value) // here we add it to the data set
+        }
+        for i in 0..<numbersCl.count {
+            let value = ChartDataEntry(x: Double(i), y: numbersCl[i]) // here we set the X and Y status in a data chart entry
+            lineChartEntryCl.append(value) // here we add it to the data set
+        }
+        
+        let linePH = LineChartDataSet(values: lineChartEntryPH, label: "pH, mV") //Here we convert lineChartEntry to a LineChartDataSet
+        let lineCl = LineChartDataSet(values: lineChartEntryCl, label: "free Cl, nA")
+        
+        linePH.colors = [NSUIColor.blue] //Sets the colour to blue
+        lineCl.colors = [NSUIColor.red]
+        
+        let dataPH = LineChartData() //This is the object that will be added to the chart
+        let dataCl = LineChartData()
+        dataPH.addDataSet(linePH) //Adds the line to the dataSet
+        dataCl.addDataSet(lineCl)
+        
+        phPlotView.data = dataPH //finally - it adds the chart data to the chart and causes an update
+        clPlotView.data = dataCl
+        phPlotView.chartDescription?.text = "" // Here we set the description for the graph
+        clPlotView.chartDescription?.text = ""
+    }
+    
     
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
         reloadView()
@@ -293,7 +338,7 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     
     
 //MARK: IBActions
-
+    
     @IBAction func barButtonPressed(_ sender: AnyObject) {
         if serial.connectedPeripheral == nil {
             performSegue(withIdentifier: "ShowScanner", sender: self)

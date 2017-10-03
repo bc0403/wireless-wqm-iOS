@@ -1,0 +1,6 @@
+framework module Pods_Serial {
+  umbrella header "Pods-Serial-umbrella.h"
+
+  export *
+  module * { export * }
+}
