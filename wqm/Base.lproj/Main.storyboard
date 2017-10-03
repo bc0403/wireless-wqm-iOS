@@ -412,34 +412,11 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Here is the received data" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-Ue-hGn">
-                                <rect key="frame" x="20" y="600" width="374" height="88"/>
+                                <rect key="frame" x="20" y="600" width="374" height="132"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="p2T-Bd-YT2"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-q6-XAi">
-                                <rect key="frame" x="2" y="692" width="410" height="44"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your message and hit 'Send'" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NKM-rO-OFm">
-                                        <rect key="frame" x="8" y="7" width="394" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="EEx-bJ-XFj" id="NfG-sn-WIR"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="NKM-rO-OFm" firstAttribute="leading" secondItem="5bc-q6-XAi" secondAttribute="leading" constant="8" id="G8O-Bs-j94"/>
-                                    <constraint firstAttribute="trailing" secondItem="NKM-rO-OFm" secondAttribute="trailing" constant="8" id="QFc-Kb-ydW"/>
-                                    <constraint firstAttribute="centerY" secondItem="NKM-rO-OFm" secondAttribute="centerY" id="bD4-N6-nXI"/>
-                                    <constraint firstAttribute="height" constant="44" id="f6N-Ij-YqS"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -451,15 +428,13 @@
                             <constraint firstItem="5b6-hl-lKR" firstAttribute="centerX" secondItem="fvc-it-Qiq" secondAttribute="centerX" id="NId-Vd-HN0"/>
                             <constraint firstAttribute="trailing" secondItem="5b6-hl-lKR" secondAttribute="trailing" constant="2" id="R3N-m1-5zU"/>
                             <constraint firstItem="uKa-Ue-hGn" firstAttribute="leading" secondItem="fvc-it-Qiq" secondAttribute="leading" constant="20" id="RKE-30-oaJ"/>
-                            <constraint firstItem="5bc-q6-XAi" firstAttribute="top" secondItem="uKa-Ue-hGn" secondAttribute="bottom" constant="4" id="XHU-cm-KQ2"/>
+                            <constraint firstItem="JDL-SJ-Cln" firstAttribute="top" secondItem="uKa-Ue-hGn" secondAttribute="bottom" constant="4" id="RNu-Hs-q0I"/>
                             <constraint firstItem="p4v-Gw-Paq" firstAttribute="centerX" secondItem="fvc-it-Qiq" secondAttribute="centerX" id="Yhm-gj-5eX"/>
                             <constraint firstItem="p4v-Gw-Paq" firstAttribute="leading" secondItem="fvc-it-Qiq" secondAttribute="leading" constant="2" id="ZxA-zs-uwC"/>
                             <constraint firstItem="5b6-hl-lKR" firstAttribute="leading" secondItem="fvc-it-Qiq" secondAttribute="leading" constant="2" id="aNX-Ya-8zt"/>
                             <constraint firstAttribute="trailing" secondItem="p4v-Gw-Paq" secondAttribute="trailing" constant="2" id="fWk-XI-JSq"/>
                             <constraint firstItem="p4v-Gw-Paq" firstAttribute="top" secondItem="rvp-3C-yeE" secondAttribute="bottom" constant="4" id="fck-gJ-2pe"/>
-                            <constraint firstAttribute="trailing" secondItem="5bc-q6-XAi" secondAttribute="trailing" constant="2" id="gNO-1g-61V"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rvp-3C-yeE" secondAttribute="trailing" id="oDR-el-u1S"/>
-                            <constraint firstItem="5bc-q6-XAi" firstAttribute="leading" secondItem="fvc-it-Qiq" secondAttribute="leading" constant="2" id="oEH-tj-L1r"/>
                             <constraint firstItem="rvp-3C-yeE" firstAttribute="centerX" secondItem="fvc-it-Qiq" secondAttribute="centerX" id="sXA-jj-ej4"/>
                             <constraint firstItem="rvp-3C-yeE" firstAttribute="leading" secondItem="fvc-it-Qiq" secondAttribute="leadingMargin" id="yrY-kA-hvz"/>
                         </constraints>
@@ -479,7 +454,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="barButton" destination="ab2-hX-zmf" id="nfs-Tg-YOv"/>
-                        <outlet property="bottomView" destination="5bc-q6-XAi" id="Jra-Of-Myf"/>
                         <outlet property="clPlotView" destination="5b6-hl-lKR" id="ct6-8q-39m"/>
                         <outlet property="label1a" destination="XgW-F7-Xxg" id="H9t-Sc-Q86"/>
                         <outlet property="label1b" destination="tWL-hS-gme" id="BJg-4x-UoF"/>
@@ -488,7 +462,6 @@
                         <outlet property="label3a" destination="yvd-Jj-uz8" id="GDm-Uv-NTG"/>
                         <outlet property="label3b" destination="92u-WS-qbl" id="OUd-hQ-vs3"/>
                         <outlet property="mainTextView" destination="uKa-Ue-hGn" id="zAW-om-CfC"/>
-                        <outlet property="messageField" destination="NKM-rO-OFm" id="cj7-qb-Sm3"/>
                         <outlet property="navItem" destination="bYe-jD-tRw" id="yFM-d6-qdH"/>
                         <outlet property="parameter1" destination="6S9-JV-U1S" id="VnJ-4E-BS5"/>
                         <outlet property="parameter2" destination="R7r-H0-27g" id="Rw8-MQ-dJf"/>
